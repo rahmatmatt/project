@@ -16,12 +16,12 @@
   <h3>Form Import</h3>
   <hr>
   
-  <a href="<?php echo base_url("csv/import_data.csv"); ?>">Download Format</a>
+  
   <br>
   <br>
   
   <!-- Buat sebuah tag form dan arahkan action nya ke controller ini lagi -->
-  <form method="post" action="<?php echo base_url("Siswa/form"); ?>" enctype="multipart/form-data">
+  <form method="post" action="<?php echo base_url("Trials/form"); ?>" enctype="multipart/form-data">
     <!-- 
     -- Buat sebuah input type file
     -- class pull-left berfungsi agar file input berada di sebelah kiri
@@ -42,7 +42,7 @@
     }
     
     // Buat sebuah tag form untuk proses import data ke database
-    echo "<form method='post' action='".base_url('Siswa/import')."'>";
+    echo "<form method='post' action='".base_url('Trials/import')."'>";
     
     // Buat sebuah div untuk alert validasi kosong
     echo "<div style='color: red;' id='kosong'>
@@ -51,16 +51,20 @@
     
     echo "<table border='1' cellpadding='8'>
     <tr>
-      <th colspan='5'>Preview Data</th>
+      <th colspan='8'>Preview Data</th>
     </tr>
     <tr>
-      <th>NIM</th>
-      <th>Nama</th>
-      <th>Tanggal Lahir</th>
-      <th>Tempat Lahir</th>
+	  <th>Trial Code</th>
+      <th>Treatment</th>
+      <th>Time Squence</th>
+	  <th>Days After</th>
+      <th>Replicate</th>
+      <th>Habitat Type</th>
+	  <th>Baits</th>
+	  <th>Hole</th>
     </tr>";
     
-    $numrow = 1;
+    $numrow = 2;
     $kosong = 0;
     
     // Lakukan perulangan dari data yang ada di csv
@@ -78,35 +82,48 @@
       // <-- END
       
       // Ambil data value yang telah di ambil dan dimasukkan ke variabel $get
-      $nim = $get[0]; // Ambil data NIS
-      $nama = $get[1]; // Ambil data nama
-      $tanggal_lahir = $get[2]; // Ambil data Tanggal Lahir
-      $tempat_lahir = $get[3]; // Ambil data Tempat Lahir
+      			$trial_code = $get[0]; // Ambil data NIS dari kolom A di csv
+		        $treatment = $get[1]; // Ambil data threatment dari kolom B di csv
+		        $time_squence = $get[2]; // Ambil data jenis kelamin dari kolom C di csv
+		        $replicate = $get[3]; // Ambil data alamat dari kolom D di csv
+				$days_after = $get[4]; // Ambil data alamat dari kolom D di csv				
+				$habitat_type = $get[5]; // Ambil data alamat dari kolom D di csv
+				$baits = $get[6]; // Ambil data alamat dari kolom D di csv
+				$hole = $get[7]; // Ambil data alamat dari kolom D di csv
       
       // Cek jika semua data tidak diisi
-      if(empty($nim) && empty($nama) && empty($tanggal_lahir) && empty($tempat_lahir))
+      if(empty($trial_code) && empty($treatment) && empty($time_squence) && empty($replicate) && empty($habitat_type) && empty($baits) && empty($hole))
         continue; // Lewat data pada baris ini (masuk ke looping selanjutnya / baris selanjutnya)
       
       // Cek $numrow apakah lebih dari 1
-      // Artinya karena baris pertama adalah nama-nama kolom
+      // Artinya karena baris pertama adalah threatment-threatment kolom
       // Jadi dilewat saja, tidak usah diimport
       if($numrow > 1){
         // Validasi apakah semua data telah diisi
-        $nim_td = ( ! empty($nim))? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah
-        $nama_td = ( ! empty($nama))? "" : " style='background: #E07171;'"; // Jika Nama kosong, beri warna merah
-        $tanggal_lahir_td = ( ! empty($tanggal_lahir))? "" : " style='background: #E07171;'"; // Jika Tanggal Lahir kosong, beri warna merah
-        $tempat_lahir_td = ( ! empty($tempat_lahir))? "" : " style='background: #E07171;'"; // Jika Tempat Lahir kosong, beri warna merah
+        $trial_code_td = ( ! empty($trial_code))? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah
+        $treatment_td = ( ! empty($treatment))? "" : " style='background: #E07171;'"; // Jika threatment kosong, beri warna merah
+        $time_squence_td = ( ! empty($time_squence))? "" : " style='background: #E07171;'"; // Jika Tanggal Lahir kosong, beri warna merah
+		$days_after_td = ( ! empty($days_after))? "" : " style='background: #E07171;'"; // Jika Tempat Lahir kosong, beri warna merah
+        $replicate_td = ( ! empty($replicate))? "" : " style='background: #E07171;'"; // Jika Tempat Lahir kosong, beri warna merah
+		
+		$habitat_type_td = ( ! empty($habitat_type))? "" : " style='background: #E07171;'"; // Jika Tempat Lahir kosong, beri warna merah
+		$baits_td = ( ! empty($baits))? "" : " style='background: #E07171;'"; // Jika Tempat Lahir kosong, beri warna merah
+		$hole_td = ( ! empty($hole))? "" : " style='background: #E07171;'"; // Jika Tempat Lahir kosong, beri warna merah
         
         // Jika salah satu data ada yang kosong
-        if(empty($nim) or empty($nama) or empty($tanggal_lahir) or empty($tempat_lahir)){
+        if(empty($trial_code) or empty($treatment) or empty($time_squence) or empty($days_after)){
           $kosong++; // Tambah 1 variabel $kosong
         }
         
         echo "<tr>";
-        echo "<td".$nim_td.">".$nim."</td>";
-        echo "<td".$nama_td.">".$nama."</td>";
-        echo "<td".$tanggal_lahir_td.">".$tanggal_lahir."</td>";
-        echo "<td".$tempat_lahir_td.">".$tempat_lahir."</td>";
+        echo "<td".$trial_code_td.">".$trial_code."</td>";
+        echo "<td".$treatment_td.">".$treatment."</td>";
+		 echo "<td".$time_squence_td.">".$time_squence."</td>";
+		 echo "<td".$days_after_td.">".$days_after."</td>";
+        echo "<td".$replicate_td.">".$replicate."</td>";
+		echo "<td".$habitat_type_td.">".$habitat_type."</td>";
+		echo "<td".$baits_td.">".$baits."</td>"; 
+		echo "<td".$hole_td.">".$hole."</td>";
         echo "</tr>";
       }
       
@@ -133,7 +150,7 @@
       
       // Buat sebuah tombol untuk mengimport data ke database
       echo "<button type='submit' name='import'>Import</button> ";
-      echo "<a href='".base_url("Siswa")."'>Cancel</a>";
+      echo "<a href='".base_url("Trials")."'>Cancel</a>";
     }
     
     echo "</form>";

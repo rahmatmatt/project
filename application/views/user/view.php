@@ -4,25 +4,25 @@
 
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Table User</h3>
+              <h3 class="box-title">Table User</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 
             <!-- button add -->
             <?php
-                echo anchor('user/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
-                echo anchor('user/rule', '<button class="btn btn-danger btn-flat margin">Rule User</button>');
+                echo anchor('user/add', '<button class="btn btn-success ">Add User</button>');
+                echo anchor('user/rule', '<button class="btn btn-success  margin">Rule User</button>');
             ?>
 
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>NO</th>
-                        <th>FOTO</th>
-                        <th>NAMA LENGKAP</th>
-                        <th>LEVEL</th>
-                        <th>AKSI</th>
+                        <th>No.</th>
+                         
+                        <th>Full Name</th>
+                        <th>Level</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
               </table>
@@ -62,13 +62,10 @@
                         "class": "text-center",
                         "orderable": false,
                     },
-                    { 
-                        "data": "foto",
-                        "class": "text-center"
-                    },
+                     
                     {
                         "data": "nama_lengkap",
-                        "width": "150px",
+                        "width": "350px",
                     },
                     { 
                         "data": "nama_level",

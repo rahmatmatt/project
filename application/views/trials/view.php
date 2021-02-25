@@ -11,12 +11,13 @@
 
             <!-- button add -->
             <?php
-                echo anchor('trials/add', '<button class="btn bg-gray btn-flat margin">Add Trial</button>');       
+                echo anchor('trials/add', '<button class="btn btn-success margin">Add Trial</button>');     
+				
             ?>
 
               <table id="exampl" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>
-                    <tr>
+                    <tr class="bg-success">
                         <th>No</th>
                         <th>Trial Code</th>
                         <th>Title</th>
@@ -47,13 +48,15 @@
 					  <td><?php echo $t['palm_age']; ?></td>
 					  <td><?php echo $t['start']; ?></td>	
 					  <td><?php echo $t['finish']; ?></td>
-					  <td><?php echo $t['finish']; ?></td>	
+					  <td><?php echo $t['status']; ?></td>	
 					  <td><?php echo $t['last_update']; ?></td>				
 					   
 					<td>
-                    <a href="<?php echo base_url(); ?>trials/lihat/<?php echo $t['trial_code'] ?>" class="btn btn-success btn-xs" title="DETAILS" data-placement="top"><i class="fa fa-eye"></i> </a>                    
-                    <a href="<?php echo base_url(); ?>trials/edit/<?php echo $t['trial_code'] ?>" class="btn btn-xs btn-primary" title="EDIT"data-placement="top"><i class="fa fa-edit"></i></a>                   
-                   <a href="<?php echo base_url(); ?>trials/delete/<?php echo $t['trial_code'] ?>"class="btn btn-xs btn-danger" title="DELETE"><i class="fa fa-trash-o"></i></a>					</td>
+                                       
+                    <a href="<?php echo base_url(); ?>trials/edit/<?php echo $t['trial_code'] ?>" class="btn btn-xs btn-warning" title="EDIT"data-placement="top"><i class="fa fa-edit"></i></a>                   
+                   <a href="<?php echo base_url(); ?>trials/delete/<?php echo $t['trial_code'] ?>"class="btn btn-xs btn-danger" title="DELETE"><i class="fa fa-trash-o"></i></a>					
+				   <a href="<?php echo base_url(); ?>trials/form/<?php echo $t['trial_code'] ?>"class="btn btn-xs btn-success" title="IMPORT"><i class="fa fa-save"></i></a>	
+				   </td>
 				  </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -83,14 +86,14 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <script>
       $(function() {
-        $('#exampl').DataTable()
-        $('#example2').DataTable({
-          'paging': true,
-          'lengthChange': true,
-          'searching': true,
-          'ordering': true,
-          'info': true,
-          'autoWidth': false
-        })
-      })
+         $('#exampl').DataTable();
+	    function filterData () {
+		    $('#tabelData').DataTable().search(
+		        $('.jenis_kelamin').val()
+		    	).draw();
+		}
+		$('.jenis_kelamin').on('change', function () {
+	        filterData();
+	    });
+	});
     </script>

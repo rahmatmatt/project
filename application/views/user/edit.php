@@ -35,7 +35,7 @@
                       <label class="col-sm-2 control-label">Password</label>
 
                       <div class="col-sm-9">
-                        <input type="password" value="<?php echo $user['password']; ?>" name="password" class="form-control" placeholder="Masukan Password">
+                        <input type="password"   name="password" class="form-control" placeholder="Masukan Password">
                       </div>
                   </div>
 
@@ -48,15 +48,7 @@
                         ?>
                       </div>
                   </div>
-
-                  <div class="form-group">
-                      <label class="col-sm-2 control-label">Foto</label>
-
-                      <div class="col-sm-5">
-                        <input type="file" name="userfile">
-                        <img src="<?php echo base_url()."/uploads/user/".$user['foto']; ?>" width="150px">
-                      </div>
-                  </div>
+ 
 
                   <div class="form-group">
                       <label class="col-sm-2 control-label"></label>

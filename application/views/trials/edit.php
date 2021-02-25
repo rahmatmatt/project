@@ -124,12 +124,12 @@
                       <label class="col-sm-2 control-label"></label>
 
                       <div class="col-sm-1">
-                        <button type="submit" name="submit" class="btn btn-primary btn-flat">Simpan</button>
+                        <button type="submit" name="submit" class="btn btn-success">Save</button>
                       </div>
 
-                      <div class="col-sm-1">
+                      <div class="col ">
                         <?php
-                          echo anchor('trials', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
+                          echo anchor('trials', 'Back', array('class'=>'btn btn-success  '));
                         ?>
                       </div>
                   </div>

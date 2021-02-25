@@ -122,8 +122,10 @@
                   </div>
 				  
 				  <div class="form-group">
-                       <label for="quantity">Quantity (between 1 and 5):</label>
-<input type="number" id="quantity" name="quantity" min="1" max="5"> 
+                      <label class="col-sm-2 control-label">Hole</label>
+
+                      <div class="col-sm-2">
+                        <input type="text" name="tot_hole" class="form-control" placeholder="Hole" required>
                       </div>
                   </div>
 				  
@@ -137,12 +139,12 @@
                       <label class="col-sm-2 control-label"></label>
 
                       <div class="col-sm-1">
-                        <button type="submit" name="submit" class="btn btn-success">Save</button>
+                        <button type="submit" name="submit" class="btn btn-success">Simpan</button>
                       </div>
 
                       
                         <?php
-                          echo anchor('trials', 'Back', array('class'=>'btn btn-success'));
+                          echo anchor('trials', 'Kembali', array('class'=>'btn btn-success'));
                         ?>
                       </div>
                   </div>

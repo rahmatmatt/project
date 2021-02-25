@@ -4,7 +4,7 @@
 
           <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Form Tambah User</h3>
+                <h3 class="box-title">Add User</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -15,57 +15,51 @@
                 <div class="box-body">
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Nama Lengkap</label>
+                      <label class="col-sm-2 control-label">Full Name</label>
 
-                      <div class="col-sm-9">
-                        <input type="text" name="nama_lengkap" class="form-control" placeholder="Masukkan Nama Lengkap">
+                      <div class="col-sm-4">
+                        <input type="text" name="nama_lengkap" class="form-control" placeholder=" Full Name" required>
                       </div>
                   </div>
 
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Username</label>
 
-                      <div class="col-sm-9">
-                        <input type="text" name="username" class="form-control" placeholder="Masukan Username">
+                      <div class="col-sm-4">
+                        <input type="text" name="username" class="form-control" placeholder=" Username" required>
                       </div>
                   </div>
 
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Password</label>
 
-                      <div class="col-sm-9">
-                        <input type="password" name="password" class="form-control" placeholder="Masukan Password">
+                      <div class="col-sm-4">
+                        <input type="password" name="password" class="form-control" placeholder=" Password" required>
                       </div>
                   </div>
 
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Level User</label>
 
-                      <div class="col-sm-5">
+                      <div class="col-sm-4">
                         <?php
                           echo cmb_dinamis('level_user', 'tbl_level_user', 'nama_level', 'id_level_user');
                         ?>
                       </div>
                   </div>
 
-                  <div class="form-group">
-                      <label class="col-sm-2 control-label">Foto</label>
+                   
 
-                      <div class="col-sm-5">
-                        <input type="file" name="userfile">
-                      </div>
-                  </div>
-
-                  <div class="form-group">
+            
                       <label class="col-sm-2 control-label"></label>
 
-                      <div class="col-sm-1">
-                        <button type="submit" name="submit" class="btn btn-primary btn-flat">Simpan</button>
-                      </div>
+                       
+                        <button type="submit" name="submit" class="btn btn-success margin  " >Save</button>
+                     
 
-                      <div class="col-sm-1">
+                     
                         <?php
-                          echo anchor('user', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
+                          echo anchor('user', 'Back', array('class'=>'btn btn-success '));
                         ?>
                       </div>
                   </div>

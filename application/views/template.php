@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>3BALAMINA | SMARTRI</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -42,9 +42,9 @@
     <!-- Logo -->
     <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>3</b>B</span>
+      
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>3BALAMINA</b></span>
+       
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -71,16 +71,16 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               
               <span class="hidden-xs"><?php echo $this->session->userdata('nama_lengkap'); ?></span>
-			  <img src="<?php echo base_url(); ?>assets/dist/img/palm2.png" class="user-image" alt="User Image">
+			  <img src="<?php echo base_url(); ?>assets/dist/img/4.png" class="user-image" alt="User Image">
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url(); ?>assets/dist/img/palm2.png"  alt="User Image" width="55">
+                <img src="<?php echo base_url(); ?>assets/dist/img/4.png"    width="123" height="123">
 
                 <p>
                   <?php echo $this->session->userdata('nama_lengkap'); ?>
-                  <small>Member since 1968</small>
+                  <small></small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -98,14 +98,14 @@
                 </div>
               </li> -->
               <!-- Menu Footer-->
-              <li class="user-footer">
+              <li class="user-footer" style="background-color:#CCCCCC">
                 <!--<div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div> -->
                 <div class="text-center">
 
                   <?php
-                    echo anchor('auth/logout', '<button class="btn btn-danger btn-flat">Log Out</button>');
+                    echo anchor('auth/logout', '<button class="btn btn-success ">Log Out</button>');
                   ?>
  
                 </div>
@@ -137,7 +137,7 @@
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
-          
+         
           
                 
                   		
@@ -148,7 +148,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">DATA MASTER</li>
 
         <!-- menu dinamis -->
 
@@ -226,11 +226,9 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-      3Balamina</h1>
+      <center><img src="<?php echo base_url(); ?>assets/dist/img/5.png"    width="150" height="53"></center>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        
       </ol>
     </section>
 
@@ -243,10 +241,8 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2021 <a href="https://adminlte.io">3Balamina</a>.</strong> All rights
-    reserved.
+      <b>Version</b> 1.0 </div>
+    <strong>Copyright &copy; 2021 <a href="https://tribalamina.com">3Balamina</a>.</strong>
   </footer>
 
   <!-- Control Sidebar -->

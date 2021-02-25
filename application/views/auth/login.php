@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
+  <title>3BALAMINA | SMARTRI</title>
   <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta content="width=device-width, initial-scale=, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -25,17 +26,29 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
-<body class="hold-transition login-page">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"></head>
 
-  <div class="login-box">
-      <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
-      </div>
+
+<body style="background-color:#FFFFFF" >
+
+<div class="col-md-4 col-md-offset-4">
+                <p>&nbsp;</p>
+                 
+                <p>&nbsp;</p>
+                <div class="login-panel panel panel-default">                  
+                    <div class="panel-heading">
+                      <left>
+                 
+            </left>
+                    </div>
+ 
+   <div class="login-box"> <center>
+    <img src="<?php echo base_url(); ?>assets/dist/img/logo.jpg" width="110" height=" 41"   >
+	  <div class="login-logo"> <img src="<?php echo base_url(); ?>assets/dist/img/2.png" width="354" height=" 190"   ></div>
+ 	
       <!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+       
 
         <?php echo form_open('auth/check_login'); ?>
 
@@ -49,20 +62,13 @@
               <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
 
-            <div class="row">
-              <div class="col-xs-8">
-                <div class="checkbox icheck">
-                  <label>
-                    <input type="checkbox"> Remember Me
-                  </label>
-                </div>
+            
+              <!-- /.col -->
+              <div>
+                <button type="submit" name="submit" class="btn btn-success btn-block">Login</button>
               </div>
               <!-- /.col -->
-              <div class="col-xs-4">
-                <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-              </div>
-              <!-- /.col -->
-            </div>
+    </div>
         </form>
 
       </div>
