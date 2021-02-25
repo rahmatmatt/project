@@ -137,7 +137,7 @@
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
-          <img src="<?php echo base_url(); ?>assets/dist/img/logo.jpg" width="208" height=" 76"   > 
+          
           
                 
                   		
