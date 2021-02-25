@@ -80,7 +80,7 @@
 	  
 		// Buat sebuah fungsi untuk melakukan insert lebih dari 1 data
 		public function insert_multiple($data){
-		    $this->db->insert_batch('trials', $data);
+		    $this->db->insert_batch('treatment', $data);
 		}
 
 	}

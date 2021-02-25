@@ -22,7 +22,7 @@
 				'username'          	  => $this->input->post('username', TRUE),
 				'password'          	  => md5( $this->input->post('password', TRUE) ),
 				'id_level_user'           => $this->input->post('level_user', TRUE),
-				'foto'					  => $foto
+				 
 			);
 			$this->db->insert($this->table, $data);
 		}
@@ -44,7 +44,7 @@
 					'username'          	  => $this->input->post('username', TRUE),
 					'password'          	  => md5( $this->input->post('password', TRUE) ),
 					'id_level_user'           => $this->input->post('level_user', TRUE),
-					'foto'					  => $foto
+					 
 				);
 			}		
 			$id_user 	= $this->input->post('id_user', TRUE);

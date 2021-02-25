@@ -1,13 +1,13 @@
 <?php
 
-	class Model_treatment extends CI_Model
+	class Model_view extends CI_Model
 	{
 
-		public $table ="treatment";
+		public $table ="trials";
 		
 		
-		function tampil_treatment(){
-        $hasil = $this->db->query("select * from treatment ");
+		function tampil_trials(){
+        $hasil = $this->db->query("select * from trials order by trial_code asc");
         return $hasil;
 		}
 
@@ -16,9 +16,18 @@
 		{
 			$data = array(
 				//tabel di database => name di form
-				
-				
-				'score'	    		=> $this->input->post('score', TRUE),				 
+				'trial_code'        	=> $this->input->post('trial_code', TRUE),
+				'title'          		=> $this->input->post('title', TRUE),
+				'location' 				=> $this->input->post('location', TRUE),
+				'block'  				=> $this->input->post('block', TRUE),
+				'palm_age'        		=> $this->input->post('palm_age', TRUE),
+				'start'	    			=> $this->input->post('start', TRUE),
+				'finish'	    		=> $this->input->post('finish', TRUE),
+				'tot_treatment'	    	=> $this->input->post('tot_treatment', TRUE),
+				'tot_time_squence'	    => $this->input->post('tot_time_squence', TRUE),
+				'tot_habitat_type'	    => $this->input->post('tot_habitat_type', TRUE),
+				'tot_baits'	    		=> $this->input->post('tot_baits', TRUE),
+				'tot_hole'	    		=> $this->input->post('tot_hole', TRUE),				 
 			);
 			$this->db->insert($this->table, $data);
 		}
