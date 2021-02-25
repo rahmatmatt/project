@@ -1,6 +1,6 @@
 <?php
 
-	class Trials extends CI_Controller
+	class View extends CI_Controller
 	{
 		private $filename = "import_data"; // nama file .csv
 		
@@ -9,14 +9,13 @@
 			parent::__construct();
 			//checkAksesModule();
 			$this->load->library('ssp');
-			$this->load->model('model_trials');
+			$this->load->model('model_view');
 		}
 		
 		function index()
     	{
-        $trials['trials'] = $this->model_trials->tampil_trials();
-        $this->template->load('template', 'trials/view', $trials);
-		
+        $trials['trials'] = $this->model_view->tampil_trials();
+        $this->template->load('template', 'view/view', $trials);
     	}
 		
 
@@ -44,14 +43,7 @@
 				
 				
 		        //untuk menampilkan aksi(edit/delete dengan parameter trial_code trials)
-		        array(
-		              'db' => 'trial_code',
-		              'dt' => 'aksi',
-		              'formatter' => function($d) {
-		               		return anchor('trials/edit/'.$d, '<i class="fa fa-edit"></i>', 'class="btn btn-xs btn-primary" data-placement="top" title="Edit"').' 
-		               		'.anchor('trials/delete/'.$d, '<i class="fa fa-times fa fa-white"></i>', 'class="btn btn-xs btn-danger" data-placement="top" title="Delete"');
-		            }
-		        )
+		       
 		    );
 
 			$sql_details = array(
@@ -205,36 +197,26 @@
 		        // <-- END
 		        
 		        // Ambil data value yang telah di ambil dan dimasukkan ke variabel $get
-		        $trial_code = $get[0]; // Ambil data NIS dari kolom A di csv
-		        $treatment = $get[1]; // Ambil data nama dari kolom B di csv
-		        $time_squence = $get[2]; // Ambil data jenis kelamin dari kolom C di csv
-		       
-				$days_after = $get[3]; // Ambil data alamat dari kolom D di csv
-				 $replicate = $get[4]; // Ambil data alamat dari kolom D di csv
-				$habitat_type = $get[5]; // Ambil data alamat dari kolom D di csv
-				$baits = $get[6]; // Ambil data alamat dari kolom D di csv
-				$hole = $get[7]; // Ambi
+		        $nim = $get[0]; // Ambil data NIS dari kolom A di csv
+		        $nama = $get[1]; // Ambil data nama dari kolom B di csv
+		        $tanggal_lahir = $get[2]; // Ambil data jenis kelamin dari kolom C di csv
+		        $tempat_lahir = $get[3]; // Ambil data alamat dari kolom D di csv
 		        
 		        // Kita push (add) array data ke variabel data
 		        array_push($data, [
-		          'trial_code'=>$trial_code, // Insert data nis
-		          'treatment'=>$treatment, // Insert data nama
-		          'time_squence'=>$time_squence, // Insert data jenis kelamin
-				  'days_after'=>$days_after,
-		          'replicate'=>$replicate, // Insert data alamat
-				   
-				    'habitat_type'=>$habitat_type,
-					 'baits'=>$baits,
-					 'hole'=>$hole,
+		          'nim'=>$nim, // Insert data nis
+		          'nama'=>$nama, // Insert data nama
+		          'tanggal_lahir'=>$tanggal_lahir, // Insert data jenis kelamin
+		          'tempat_lahir'=>$tempat_lahir, // Insert data alamat
 		        ]);
 		      }
 		      
 		      $numrow++; // Tambah 1 setiap kali looping
 		    }
 		    // Panggil fungsi insert_multiple yg telah kita buat sebelumnya di model
-		    $this->model_trials->insert_multiple($data);
+		    $this->model_siswa->insert_multiple($data);
 		    
-		    redirect("trials"); // Redirect ke halaman awal (ke controller siswa fungsi index)
+		    redirect("Siswa"); // Redirect ke halaman awal (ke controller siswa fungsi index)
 		  }
 
 		

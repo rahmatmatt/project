@@ -34,7 +34,7 @@
 		              'db' => 'id_user',
 		              'dt' => 'aksi',
 		              'formatter' => function($d) {
-		               		return anchor('user/edit/'.$d, '<i class="fa fa-edit"></i>', 'class="btn btn-xs btn-primary" data-placement="top" title="Edit"').' 
+		               		return anchor('user/edit/'.$d, '<i class="fa fa-edit"></i>', 'class="btn btn-xs btn-success" data-placement="top" title="Edit"').' 
 		               		'.anchor('user/delete/'.$d, '<i class="fa fa-times fa fa-white"></i>', 'class="btn btn-xs btn-danger" data-placement="top" title="Delete"');
 		            }
 		        )
@@ -86,7 +86,7 @@
 		{
 			$kode_user = $this->uri->segment(3);
 			if (!empty($kode_user)) {
-				$this->db->where('kd_user', $kode_user);
+				$this->db->where('id_user', $kode_user);
 				$this->db->delete('tbl_user');
 			}
 			redirect('user');
