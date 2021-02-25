@@ -14,92 +14,126 @@
 
                 <div class="box-body">
 				
-				<div class="form-group">
+				 <div class="form-group">
                       <label class="col-sm-2 control-label">Trial Code</label>
 
-                      <div class="col-sm-2">
-                        <input type="text" value=" " readonly="true" name="trial_code" class="form-control"  >
-                      </div>
-                  </div>
-				  
-				  <div class="form-group">
-                      <label class="col-sm-2 control-label">Title</label>
-
-                      <div class="col-sm-2">
-                        <input type="text" value=" " readonly="true" name="title" class="form-control"  >
-                      </div>
-                  </div>
-				  
-				  <div class="form-group">
-                      <label class="col-sm-2 control-label">Time Squence</label>
-
-                      <div class="col-sm-2">
-                        <input type="text" value=" " readonly="true" name="time_squence" class="form-control"  >
-                      </div>
-                  </div>
-				  
-				   <div class="form-group">
-                      <label class="col-sm-2 control-label">Observation Date</label>
-
-                      <div class="col-sm-2">
-                        <input type="date" value=" "   name="time_squence" class="form-control"  >
-                      </div>
-                  </div>
-				  
-				   <div class="form-group">
-                      <label class="col-sm-2 control-label">Days After Aplication</label>
-
-                      <div class="col-sm-2">
-                        <input type="text" value=" " readonly="true" name="time_squence" class="form-control"  >
-                      </div>
-                  </div>
-				  
-				   <div class="form-group">
-                      <label class="col-sm-2 control-label">Habitat Type</label>
-
-                      <div class="col-sm-2">
-                        <input type="text" value=" " readonly="true" name="habitat_type" class="form-control"  >
-                      </div>
-                  </div>
-				  
-				   <div class="form-group">
-                      <label class="col-sm-2 control-label">Baits</label>
-
-                      <div class="col-sm-2">
-                        <input type="text" value=" " readonly="true" name="baits" class="form-control"  >
-                      </div>
-                  </div>
-				  
-				   <div class="form-group">
-                      <label class="col-sm-2 control-label">Hole</label>
-
-                      <div class="col-sm-2">
-                        <input type="text" value=" " readonly="true" name="hole" class="form-control"  >
-                      </div>
-                  </div>
-				  
-				  
-
-                  
-				  
-				  
-
-                  
-
-                 
-
-                  <div class="form-group">
-                      <label class="col-sm-2 control-label"></label>
-
-                      <div class="col-sm-1">
-                        <button type="submit" name="submit" class="btn btn-primary btn-flat">Simpan</button>
-                      </div>
-
-                      <div class="col-sm-1">
+                      <div class="col-sm-3">
                         <?php
-                          echo anchor('trials', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
+                          echo cmb_dinamis('trialcode', 'trials', 'trial_code'  , 'trial_code');				  
                         ?>
                       </div>
+                  </div>
+				  
+				<div class="form-group">
+                      <label class="col-sm-2 control-label">Select Treatment</label>
+					  <div class="col-sm-2">
+
+						<select class="form-control treatment" name="">
+							<option value="">All</option>
+							<option value="Control">Control</option>
+							<option value="EFB">EFB</option>
+						</select>
+					</div>
+				</div>
+				 
+				<div class="form-group">
+                      <label class="col-sm-2 control-label">Select Time Squence</label>
+					  <div class="col-sm-2">
+
+						<select class="form-control treatment" name="">
+							<option>All</option>
+							<option value="Control">Control</option>
+							<option value="EFB">EFB</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+                      <label class="col-sm-2 control-label">Select Replicate</label>
+					  <div class="col-sm-2">
+
+						<select class="form-control treatment" name="">
+							<option>All</option>
+							<option value="Control">Control</option>
+							<option value="EFB">EFB</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+                      <label class="col-sm-2 control-label">Select Habitat Type</label>
+					  <div class="col-sm-2">
+
+						<select class="form-control treatment" name="">
+							<option>All</option>
+							<option value="Control">Control</option>
+							<option value="EFB">EFB</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+                        <label for="LastName" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <button type="button" id="btn-filter" class="btn btn-primary">Filter</button>
+                            <button type="button" id="btn-reset" class="btn btn-default">Reset</button>
+                        </div>
+                    </div>
+         
+            
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+					   <table id="exampl" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th width="3%">No</th>
+						 <th width="24%">Trial Code</th>
+                        <th width="12%">Treatment</th>
+                        <th width="12%">Time Squence</th>
+                        <th width="11%">Replicate</th>
+                        <th width="11%">Habitat Type</th>
+						<th width="12%">Baits</th>
+						<th width="3%">Hole</th>
+						<th width="12%">Score</th>
+                       
+                    </tr>
+                </thead>
+				
+				<tbody>
+                  <?php
+                  $no = 0;
+                  foreach ($treatment->result_array() as $t) :
+                    $no++;
+                    
+                    ?>
+                    <tr>
+                      <td><?php echo $no; ?></td>
+					  <td><?php echo $t['trial_code']; ?></td>
+                      <td><?php echo $t['treatment']; ?></td>
+					  <td><?php echo $t['time_squence']; ?></td>
+					  <td><?php echo $t['replicate']; ?></td>
+					  <td><?php echo $t['habitat_type']; ?>
+					  <td><?php echo $t['baits']; ?>
+					  <td><?php echo $t['hole']; ?>
+					  <td><input type="number"  name="score"   min="0" max="1" required></td>				   					 
+				  </tr>
+				  
+                  <?php endforeach; ?>
+				  
+                </tbody>
+				
+			                  
+              </table>
+
+                       <div class="col-sm-12" align="right">
+                        <button type="submit" name="submit" class="btn btn-success">  Save  </button>
+                      </div>      
+
+
+            </div>
+            <!-- /.box-body -->
+          </div>
                   </div>
 
                 </div>
@@ -112,3 +146,17 @@
     </div>
     <!-- /.row -->
 </section>
+
+
+<script src="<?php echo base_url(); ?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+ <script type="text/javascript">
+	$(document).ready(function() {
+	    $('#exampl').DataTable();
+	    
+		$('.treatment').on('change', function () {
+	        console.log($('.treatment').val());
+	    });
+	});
+</script>
