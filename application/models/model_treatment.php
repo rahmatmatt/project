@@ -73,6 +73,23 @@
 		public function insert_multiple($data){
 		    $this->db->insert_batch('trials', $data);
 		}
+		public function updateScore($id,$object)
+		{
+			$this->db->where('id', $id);
+			$this->db->update($this->table, $object);
+			
+		}
+		public function filterData($data)
+		{
+			$this->db->from($this->table);
+			if ($data['streatment']!="") {
+				$this->db->where('treatment', $data['streatment']);
+			}
+			$this->db->where('trial_code', $data['trialcode']);
+			
+			return $this->db->get();
+			
+		}
 
 	}
 	

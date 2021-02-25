@@ -9,7 +9,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <?php
-                echo form_open_multipart('treatment/add', 'role="form" class="form-horizontal"');
+                echo form_open_multipart('treatment/filter', 'role="form" class="form-horizontal"');
             ?>
 
                 <div class="box-body">
@@ -28,7 +28,7 @@
                       <label class="col-sm-2 control-label">Select Treatment</label>
 					  <div class="col-sm-2">
 
-						<select class="form-control treatment" name="">
+						<select class="form-control treatment" name="streatment">
 							<option value="">All</option>
 							<option value="Control">Control</option>
 							<option value="EFB">EFB</option>
@@ -75,7 +75,7 @@
 				<div class="form-group">
                         <label for="LastName" class="col-sm-2 control-label"></label>
                         <div class="col-sm-4">
-                            <button type="button" id="btn-filter" class="btn btn-primary">Filter</button>
+                            <button type="submit" id="btn-filter" class="btn btn-primary">Filter</button>
                             <button type="button" id="btn-reset" class="btn btn-default">Reset</button>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
 					  <td><?php echo $t['habitat_type']; ?>
 					  <td><?php echo $t['baits']; ?>
 					  <td><?php echo $t['hole']; ?>
-					  <td><input type="number"  name="score"   min="0" max="1" required></td>				   					 
+					  <td><i style="color: white;"><?=$t['score']?></i><input type="number"  name="score" id="<?=$t['id']?>" onchange="saveData(<?=$t['id']?>)" value="<?=$t['score']?>"   min="0" max="1" required></td>				   					 
 				  </tr>
 				  
                   <?php endforeach; ?>
@@ -159,4 +159,21 @@
 	        console.log($('.treatment').val());
 	    });
 	});
+  let url="<?=base_url()?>";
+  function saveData(id) {
+    const score=$("#"+id).val();
+    const data={
+      id:id,
+      score:score
+    }
+    $.ajax({
+      type: "POST",
+      url: url+"treatment/saveScore",
+      data: data,
+      dataType: "JSON",
+      success: function (response) {
+        console.log(response);
+      }
+    });
+    }
 </script>

@@ -11,10 +11,20 @@
 			$this->load->library('ssp');
 			$this->load->model('model_treatment');
 		}
-		
+		public function saveScore(Type $var = null)
+		{
+			$id=$this->input->post('id');
+			$insert=[
+				'score'=>$this->input->post('score'),
+			];
+			$this->model_treatment->updateScore($id,$insert);
+			$response=['response'=>200,'status'=>'success'];
+			echo json_encode($response);
+		}
 		function index()
     	{
         $treatment['treatment'] = $this->model_treatment->tampil_treatment();
+		// echo json_encode($treatment);
         $this->template->load('template', 'treatment/add', $treatment);
     	}
 		
@@ -67,7 +77,19 @@
 		}
 
 
-		
+		public function filter(Type $var = null)
+		{
+			$trialCode=$this->input->post('trialcode');
+			$streatment=$this->input->post('streatment');
+			$data=[
+				'trialcode'=>$trialCode,
+				'streatment'=>$streatment,
+			];
+			$treatment['treatment']=$this->model_treatment->filterData($data);
+			$this->template->load('template', 'treatment/add', $treatment);
+			
+			
+		}
 		
 
 		function add()
