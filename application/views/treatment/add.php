@@ -147,7 +147,22 @@
     <!-- /.row -->
 </section>
 
-
+<!-- Modal -->
+<div class="modal fade" id="modal-alert" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Peringatan</h5>
+			</div>
+			<div class="modal-body">
+			Maaf Score yang di izinkan cuma 1 dan 0 !!!
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+			</div>
+		</div>
+	</div>
+</div>
 <script src="<?php echo base_url(); ?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
@@ -166,7 +181,10 @@
       id:id,
       score:score
     }
-    $.ajax({
+   if (score>1) {
+		 $("#modal-alert").modal("show");
+	 } else{
+		$.ajax({
       type: "POST",
       url: url+"treatment/saveScore",
       data: data,
@@ -175,5 +193,6 @@
         console.log(response);
       }
     });
+	 }
     }
 </script>
