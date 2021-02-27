@@ -32,6 +32,10 @@
                       </div>
                   </div>
 				  
+				  
+				  
+				  
+				  
 				   <div class="form-group">
                       <label class="col-sm-2 control-label">Location</label>
 
@@ -121,11 +125,7 @@
                       </div>
                   </div>
 				  
-				  <div class="form-group">
-                       <label for="quantity">Quantity (between 1 and 5):</label>
-<input type="number" id="quantity" name="quantity" min="1" max="5"> 
-                      </div>
-                  </div>
+				  
 				  
 				   <input type="hidden" name="last_update" value="<?php echo date("Y-m-d"); ?>" />
 
