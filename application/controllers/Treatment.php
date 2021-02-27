@@ -81,9 +81,15 @@
 		{
 			$trialCode=$this->input->post('trialcode');
 			$streatment=$this->input->post('streatment');
+			$stime=$this->input->post('stime');
+			$sreplicate=$this->input->post('sreplicate');
+			$shabitat=$this->input->post('shabitat');
 			$data=[
 				'trialcode'=>$trialCode,
 				'streatment'=>$streatment,
+				'stime'=>$stime,
+				'sreplicate'=>$sreplicate,
+				'shabitat'=>$shabitat,
 			];
 			$treatment['treatment']=$this->model_treatment->filterData($data);
 			$this->template->load('template', 'treatment/add', $treatment);
