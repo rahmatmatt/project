@@ -82,9 +82,26 @@
 		public function filterData($data)
 		{
 			$this->db->from($this->table);
-			if ($data['streatment']!="") {
+			
+			if ($data['streatment']!="") 
+			{
 				$this->db->where('treatment', $data['streatment']);
 			}
+			if ($data['stime']!="") 
+			{
+				$this->db->where('time_squence', $data['stime']);
+			}
+			if ($data['shabitat']!="") 
+			{
+				$this->db->where('habitat_type', $data['shabitat']);
+			}
+			 
+			 if ($data['sreplicate']!="") 
+			{
+				$this->db->where('replicate', $data['sreplicate']);
+			}
+			 
+			
 			$this->db->where('trial_code', $data['trialcode']);
 			
 			return $this->db->get();
