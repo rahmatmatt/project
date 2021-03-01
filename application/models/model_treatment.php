@@ -111,7 +111,7 @@ class Model_treatment extends CI_Model
 
         $config['upload_path'] = './csv/';
         $config['allowed_types'] = 'csv';
-        $config['max_size'] = '2048';
+        $config['max_size'] = '10000';
         $config['overwrite'] = true;
         $config['file_name'] = $filename;
 
