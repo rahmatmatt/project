@@ -1,6 +1,6 @@
 <?php
 
-class Treatment extends CI_Controller
+class Measurement extends CI_Controller
 {
     private $filename = "import_data"; // nama file .csv
 
@@ -9,7 +9,7 @@ class Treatment extends CI_Controller
         parent::__construct();
         //checkAksesModule();
         $this->load->library('ssp');
-        $this->load->model('model_treatment');
+        $this->load->model('model_measurement');
     }
     public function saveScore(Type $var = null)
     {
@@ -23,9 +23,9 @@ class Treatment extends CI_Controller
     }
     public function index()
     {
-        $treatment['treatment'] = $this->model_treatment->tampil_treatment();
+        $treatment['treatment'] = $this->model_measurement->tampil_measurement();
         // echo json_encode($treatment);
-        $this->template->load('template', 'treatment/add', $treatment);
+        $this->template->load('template', 'measurement/add', $treatment);
     }
 
     public function data()
