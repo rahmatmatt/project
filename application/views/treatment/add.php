@@ -28,7 +28,7 @@
             <label class="col-sm-2 control-label">Select Treatment</label>
             <div class="col-sm-2">
 
-              <select class="form-control " name="streatment">
+              <select class="form-control" name="streatment">
                 <option value="">All</option>
                 <option value="Control">Control</option>
                 <option value="EFB">EFB</option>
@@ -40,7 +40,7 @@
             <label class="col-sm-2 control-label">Select Time Squence</label>
             <div class="col-sm-1">
 
-              <select class="form-control " name="stime">
+              <select class="form-control" name="stime">
                 <option value="">All</option>
                 <option value="1">1</option>
                 <option value="2">2 </option>
@@ -85,7 +85,7 @@
             <label class="col-sm-2 control-label">Select Habitat Type</label>
             <div class="col-sm-2">
 
-              <select class="form-control treatment" name="shabitat">
+              <select class="form-control" name="shabitat">
                 <option value="">All</option>
                 <option value="Between EFB-Soil">Between EFB-Soil</option>
                 <option value="Control">Control</option>
@@ -141,7 +141,6 @@
                   $no = 0;
                   foreach ($treatment->result_array() as $t) :
                     $no++;
-
                     ?>
               <tr>
                 <td><?php echo $no; ?></td>
@@ -155,7 +154,6 @@
                 <td><i style="color: white;"><?=$t['score']?></i><input type="number" name="score" id="<?=$t['id']?>"
                     onchange="saveData(<?=$t['id']?>)" value="<?=$t['score']?>" min="0" max="1"></td>
               </tr>
-
               <?php endforeach; ?> -->
 
             </tbody>
