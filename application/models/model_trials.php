@@ -82,6 +82,19 @@
 		public function insert_multiple($data){
 		    $this->db->insert_batch('treatment', $data);
 		}
+		public function getTrials(Type $var = null)
+		{
+			$this->db->from($this->table);
+			return $this->db->get();
+			
+		}
+		public function findTrials($trial_code)
+		{
+			$this->db->from($this->table);
+			$this->db->where('trial_code', $trial_code);
+			return $this->db->get();
+			
+		}
 
 	}
 	

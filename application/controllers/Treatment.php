@@ -10,6 +10,8 @@ class Treatment extends CI_Controller
         //checkAksesModule();
         $this->load->library('ssp');
         $this->load->model('model_treatment');
+        $this->load->model('model_trials');
+        
     }
     public function saveScore(Type $var = null)
     {
@@ -300,6 +302,26 @@ class Treatment extends CI_Controller
             $data[] = $row;
         }
         $response = ['status' => 20, 'msg' => 'Data di datapatkan', 'draw' => $post['draw'], 'recordsTotal' => $this->model_treatment->count_all($post), 'recordsFiltered' => $this->model_treatment->count_filtered($post), 'data' => $data, "post" => $post];
+        echo json_encode($response);
+    }
+    public function getTrials(Type $var = null)
+    {
+        $data=$this->model_trials->getTrials()->result_array();
+        $response=['response'=>200,'status'=>'success','data'=>$data,];
+        echo json_encode($response);
+    }
+    public function findTrials(Type $var = null)
+    {
+        $trial_code=$this->input->post('id');
+        $trials=$this->model_trials->findTrials($trial_code)->row_array();
+        $tot_treatment=str_replace(" ","",$trials['tot_treatment']);
+        $tot_time_squence=str_replace(" ","",$trials['tot_time_squence']);
+        $data=[
+            'trial_code'=>$trials['trial_code'],
+            'tot_treatment'=>explode(",",$tot_treatment),
+            'tot_time_squence'=>explode(",",$tot_time_squence),
+        ];
+        $response=['response'=>200,'status'=>'success','data'=>$data,];
         echo json_encode($response);
     }
 

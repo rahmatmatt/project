@@ -18,9 +18,12 @@
             <label class="col-sm-2 control-label">Trial Code</label>
 
             <div class="col-sm-2">
-              <?php
+              <!-- <?php
                           echo cmb_dinamis('trialcode', 'trials', 'trial_code'  , 'trial_code');				  
-                        ?>
+                        ?> -->
+              <select name="trial_code" id="trial_code" class="form-control" onclick="search_data()">
+                <option value=""></option>
+              </select>
             </div>
           </div>
 
@@ -28,7 +31,7 @@
             <label class="col-sm-2 control-label">Select Treatment</label>
             <div class="col-sm-2">
 
-              <select class="form-control" name="streatment">
+              <select class="form-control" name="streatment" id="streatment">
                 <option value="">All</option>
                 <option value="Control">Control</option>
                 <option value="EFB">EFB</option>
@@ -40,7 +43,7 @@
             <label class="col-sm-2 control-label">Select Time Squence</label>
             <div class="col-sm-1">
 
-              <select class="form-control" name="stime">
+              <select class="form-control" name="stime" id="stime">
                 <option value="">All</option>
                 <option value="1">1</option>
                 <option value="2">2 </option>
@@ -206,8 +209,8 @@
   href="<?php echo base_url(); ?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 <script type="text/javascript">
   $(document).ready(function () {
-   showData();
-
+    getTrials();
+    showData();
     $('.treatment').on('change', function () {
       console.log($('.treatment').val());
     });
@@ -247,13 +250,55 @@
       "ajax": {
         "url": "<?=base_url();?>treatment/getTreatment",
         "type": "POST"
-      },	"aoColumnDefs": [{
- 					"aTargets": [8],
- 					"mRender": function (data, type, row) {
- 						return `<i style="color: white;">`+row[8]+`</i><input type="number" name="score" id="`+row[9]+`"
-                    onchange="saveData(`+row[9]+`)" value="`+row[8]+`" min="0" max="1">`
- 					}
- 				}],
+      },
+      "aoColumnDefs": [{
+        "aTargets": [8],
+        "mRender": function (data, type, row) {
+          return `<i style="color: white;">` + row[8] + `</i><input type="number" name="score" id="` + row[
+            9] + `"
+                    onchange="saveData(` + row[9] + `)" value="` + row[8] + `" min="0" max="1">`
+        }
+      }],
     });
   }
+  function getTrials() { 
+    $.ajax({
+      type: "POST",
+      url: url+"treatment/getTrials",
+      data: "data",
+      dataType: "JSON",
+      success: function (response) {
+        if (response.status=='success') {
+          let html='';
+          response.data.forEach(element => {
+            html+=`<option value="`+element.trial_code+`">`+element.trial_code+`</option>`;
+          });
+          $("#trial_code").html(html);
+        }
+      }
+    });
+   }
+   function search_data() {
+     $.ajax({
+       type: "POST",
+       url: url+"treatment/findTrials",
+       data: {id:$("#trial_code").children("option:selected").val()},
+       dataType: "JSON",
+       success: function (response) {
+         if (response.status=='success') {
+           let streatment="";
+           response.data.tot_treatment.forEach(element => {
+             streatment+=`<option value="`+element+`">`+element+`</option>`;
+           });
+           $("#streatment").html(streatment);
+
+           let stime="";
+           response.data.tot_time_squence.forEach(element => {
+            stime+=`<option value="`+element+`">`+element+`</option>`;
+           });
+           $("#stime").html(stime);
+         }
+       }
+     });
+     }
 </script>
