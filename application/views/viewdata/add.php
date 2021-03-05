@@ -4,16 +4,18 @@
 
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">VIEW DATA	</h3>
+          <h3 class="box-title">View All Data</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
         <?php
-                echo form_open_multipart('measurement/filter', 'role="form" class="form-horizontal"');
+                echo form_open_multipart('viewdata/filter', 'role="form" class="form-horizontal"');
             ?>
 
         <div class="box-body">
-          <div class="form-group">
+
+          
+		 <div class="form-group">
             <label class="col-sm-2 control-label">Trial Code</label>
             <div class="col-sm-2">
               <?php
@@ -23,20 +25,10 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label">Select Treatment</label>
-            <div class="col-sm-2">
-
-              <?php
-                    echo cmb_dinamis('treatment', 'trials', 'tot_treatment'  , 'tot_treatment');				  
-              ?>
-            </div>
-          </div>
-		  
-		   <div class="form-group">
             <label class="col-sm-2 control-label">Select Time Squence</label>
             <div class="col-sm-2">
 
-              <select class="form-control" name="streatment">
+               <select class="form-control" name="streatment">
                 <option value="">All</option>
                 <option value="Control">1</option>
                 <option value="EFB">2</option>
@@ -44,6 +36,21 @@
 				<option value="EFB">4</option>
 				<option value="EFB">5</option>
               </select>
+            </div>
+          </div>
+		  
+		   <div class="form-group">
+            <label class="col-sm-2 control-label">Select Replicate</label>
+            <div class="col-sm-2">
+				<select class="form-control" name="streatment">
+                <option value="">All</option>
+                <option value="Control">1</option>
+                <option value="EFB">2</option>
+				<option value="EFB">3</option>
+				<option value="EFB">4</option>
+				<option value="EFB">5</option>
+              </select>
+               
             </div>
           </div>
 
@@ -54,6 +61,7 @@
               <button type="button" id="btn-reset" class="btn btn-default">Reset</button>
             </div>
           </div>
+
            
         <!-- /.box-header -->
         <div class="table-responsive">
@@ -67,18 +75,42 @@
                         <th width="11%">Location</th>
                         <th width="5%">Block</th>
                         <th width="6%">Palm Age</th>
-                        <th width="6%">Treatment</th>
+						<th width="6%">Start</th>
+						<th width="6%">Finish</th>
+						 <th width="6%">Installation Date</th>
+                        <th width="6%">Treatment Organic Material</th>
+						<th width="6%">Treatment Rate</th>
+						<th width="6%">Treatment Frequency</th>
+						<th width="6%">Treatment Slopes</th>
+						<th width="6%">Treatment Management Practices</th>
+						<th width="6%">Treatment Direction</th>
+						<th width="6%">Treatment Distance</th>
+						<th width="6%">Treatment Position</th>
+						<th width="6%">Treatment N</th>
+						<th width="6%">Treatment P</th> 
+						<th width="6%">Treatment K</th> 
+						<th width="6%">Treatment Mg</th> 
+						<th width="6%">Treatment GPS</th> 
+						 
                         <th width="5%">Time Squence</th>
+						<th width="5%">Days After Aplication</th>
                         <th width="6%">Replicate</th>
+						<th width="5%">Degree</th>
+						<th width="5%">Palm Number</th>
                         <th width="5%">Habitat Type</th>
-                        <th width="5%">Baits</th>
+                        <th width="5%">Bait ID</th>
                         <th width="5%">Hole</th>
-                        <th width="6%">Score</th>
+                        <th width="6%">Bait Score</th>
                         <th width="6%">Soil Humidity</th>
                         <th width="6%">Temperature</th>
                         <th width="6%">Rainfall During Installation</th>
                         <th width="6%">Rainfall 3 Days Before Installation</th>
                         <th width="6%">Rainfall 6 Days Before Installation</th>
+						<th width="5%">Porosity</th>
+						<th width="5%">Agregate Stability</th>
+						<th width="5%">Field Capacity</th>
+						<th width="5%">Wilting Point</th>
+						 
                         <th width="5%">pH_0-5</th>
                         <th width="5%">C-Org_0-5</th>
                         <th width="5%">N-Total_0-5</th>
@@ -87,6 +119,12 @@
                         <th width="5%">K total_0-5</th>
                         <th width="5%">KTK_0-5</th>
                         <th width="5%">Mg_0-5</th>
+						<th width="5%">Ca_0-5</th>
+						<th width="5%">P Bray_0-5</th>
+						<th width="5%">K_0-5</th>
+						<th width="5%">Na_0-5</th>
+						<th width="5%">H-Tkr_0-5</th>
+						<th width="5%">Al-Tkr_0-5</th>
                         <th width="5%">pH_5-10</th>
                         <th width="5%">C-Org_5-10</th>
                         <th width="5%">N-Total_5-10</th>
@@ -95,6 +133,12 @@
                         <th width="5%">K total_5-10</th>
                         <th width="5%">KTK_5-10</th>
                         <th width="5%">Mg_5-10</th>
+						<th width="5%">Ca_0-10</th>
+						<th width="5%">P Bray_0-10</th>
+						<th width="5%">K_0-10</th>
+						<th width="5%">Na_0-10</th>
+						<th width="5%">H-Tkr_0-10</th>
+						<th width="5%">Al-Tkr_0-10</th>
 
               </tr>
             </thead>
