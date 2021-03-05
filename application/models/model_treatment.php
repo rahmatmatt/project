@@ -47,6 +47,25 @@ class Model_treatment extends CI_Model
     public function get_datatables($post)
     {
         $this->get_datatables_query($post);
+        if ($post['filter']!=false) {
+            $filter=$post['filter'];
+            if ($filter['trial_code']!="") {
+                $this->db->where('trial_code', $filter['trial_code']);
+            }
+            if ($filter['streatment']!="") {
+                $this->db->where('treatment', $filter['streatment']);
+            }
+            if ($filter['stime']!="") {
+                $this->db->where('time_squence', $filter['stime']);
+            }
+            if ($filter['sreplicate']!="") {
+                $this->db->where('replicate', $filter['sreplicate']);
+            }
+            if ($filter['shabitat']!="") {
+                $this->db->where('habitat', $filter['shabitat']);
+            }
+        }
+       
         if ($post['length'] != -1) {
             $this->db->limit($post['length'], $post['start']);
         }

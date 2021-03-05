@@ -274,14 +274,25 @@ class Treatment extends CI_Controller
     // }
     public function getTreatment(Type $var = null)
     {
+        
+        $filter=str_replace("%"," ",$this->input->post("filter"));
+        $filter=explode("&",$filter);
+        if ($this->input->post('filter')=="") {
+            $filter2=false;
+        } else{
+            foreach ($filter as $key => $value) {
+                $explode=explode("=",$value);
+                $filter2[$explode[0]]=$explode[1];
+            }
+        }
+        
         $post = [
             'length' => $this->input->post('length'),
             'start' => $this->input->post('start'),
             'order' => $this->input->post('order'),
             'search' => $this->input->post('search'),
             'draw' => $this->input->post('draw'),
-            "school_id" => $this->input->post("school_id"),
-            'jenis' => $this->input->post('jenis'),
+            'filter' => $filter2,
         ];
         $list = $this->model_treatment->get_datatables($post);
         $data = [];
@@ -301,7 +312,7 @@ class Treatment extends CI_Controller
 			$row[]=$field->id;
             $data[] = $row;
         }
-        $response = ['status' => 20, 'msg' => 'Data di datapatkan', 'draw' => $post['draw'], 'recordsTotal' => $this->model_treatment->count_all($post), 'recordsFiltered' => $this->model_treatment->count_filtered($post), 'data' => $data, "post" => $post];
+        $response = ['status' => 20, 'msg' => 'Data di datapatkan', 'draw' => $post['draw'],'filter'=>$filter2, 'recordsTotal' => $this->model_treatment->count_all($post), 'recordsFiltered' => $this->model_treatment->count_filtered($post), 'data' => $data, "post" => $post];
         echo json_encode($response);
     }
     public function getTrials(Type $var = null)

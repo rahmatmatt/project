@@ -8,21 +8,18 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <?php
+        <!-- <?php
                 echo form_open_multipart('treatment/filter', 'role="form" class="form-horizontal"');
-            ?>
-
+            ?> -->
+            <form action="#"  class="form-horizontal filterData" method="post">
         <div class="box-body">
 
           <div class="form-group">
             <label class="col-sm-2 control-label">Trial Code</label>
 
             <div class="col-sm-2">
-              <!-- <?php
-                          echo cmb_dinamis('trialcode', 'trials', 'trial_code'  , 'trial_code');				  
-                        ?> -->
               <select name="trial_code" id="trial_code" class="form-control" onclick="search_data()">
-                <option value=""></option>
+              <option value=""></option>
               </select>
             </div>
           </div>
@@ -103,7 +100,7 @@
           <div class="form-group">
             <label for="LastName" class="col-sm-2 control-label"></label>
             <div class="col-sm-4">
-              <button type="submit" id="btn-filter" class="btn btn-primary">Filter</button>
+              <button type="button" onclick="filter()" id="btn-filter" class="btn btn-primary">Filter</button>
               <button type="button" id="btn-reset" class="btn btn-default">Reset</button>
             </div>
           </div>
@@ -117,7 +114,7 @@
             </div>
 
           </div>
-
+          </form>
 
         </div>
         <!-- /.box-header -->
@@ -210,7 +207,7 @@
 <script type="text/javascript">
   $(document).ready(function () {
     getTrials();
-    showData();
+    showData("");
     $('.treatment').on('change', function () {
       console.log($('.treatment').val());
     });
@@ -239,7 +236,7 @@
     }
   }
 
-  function showData() {
+  function showData(data) {
     table = $('#table-treatment').DataTable({
 
       "processing": true,
@@ -249,7 +246,8 @@
 
       "ajax": {
         "url": "<?=base_url();?>treatment/getTreatment",
-        "type": "POST"
+        "type": "POST",
+        "data":{"filter":data}
       },
       "aoColumnDefs": [{
         "aTargets": [8],
@@ -301,4 +299,9 @@
        }
      });
      }
+     function filter() {
+       let trial_code=$("#trial_code").children("option:selected").val();
+       let data=$(".filterData").serialize()+trial_code;
+       showData(data);
+       }
 </script>
