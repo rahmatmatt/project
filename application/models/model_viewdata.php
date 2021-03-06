@@ -46,22 +46,51 @@ class Model_viewdata extends CI_Model
 
     public function get_datatables($post)
     {
-        $this->get_datatables_query($post);
         if ($post['length'] != -1) {
             $this->db->limit($post['length'], $post['start']);
         }
+        if ($post['trial_code']!=null) {
+            $this->db->where('trial_code', $post['trial_code']);
+        }
+        if ($post['squence']!=null) {
+            $this->db->where('time_squence', $post['squence']);
+        }
+        if ($post['replicate']!=null) {
+            $this->db->where('replicate', $post['replicate']);
+        }
+        $this->get_datatables_query($post);
+       
         return $this->db->get()->result();
     }
 
     public function count_filtered($post)
     {
+        if ($post['trial_code']!=null) {
+            $this->db->where('trial_code', $post['trial_code']);
+        }
+        if ($post['squence']!=null) {
+            $this->db->where('time_squence', $post['squence']);
+        }
+        if ($post['replicate']!=null) {
+            $this->db->where('replicate', $post['replicate']);
+        }
         $this->get_datatables_query($post);
+        
         return $this->db->get()->num_rows();
     }
 
     public function count_all($post)
     {
         $this->db->from($this->table);
+        if ($post['trial_code']!=null) {
+            $this->db->where('trial_code', $post['trial_code']);
+        }
+        if ($post['squence']!=null) {
+            $this->db->where('time_squence', $post['squence']);
+        }
+        if ($post['replicate']!=null) {
+            $this->db->where('replicate', $post['replicate']);
+        }
         return $this->db->count_all_results();
     }
     public function tampil_viewdata()

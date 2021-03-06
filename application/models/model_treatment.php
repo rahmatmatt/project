@@ -180,5 +180,13 @@ class Model_treatment extends CI_Model
         return $this->db->get();
 
     }
+    public function filterSelect($object)
+    {
+        $this->db->select($object);
+        $this->db->from($this->table);
+        $this->db->distinct($object);
+        return $this->db->get()->result_array();
+        
+    }
 
 }

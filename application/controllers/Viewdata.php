@@ -10,6 +10,8 @@ class Viewdata extends CI_Controller
         //checkAksesModule();
         $this->load->library('ssp');
         $this->load->model('model_viewdata');
+        $this->load->model('model_treatment');
+        
     }
     public function saveScore(Type $var = null)
     {
@@ -26,6 +28,13 @@ class Viewdata extends CI_Controller
         $viewdata['treatment'] = $this->model_viewdata->tampil_viewdata();
         // echo json_encode($treatment);
         $this->template->load('template', 'viewdata/add', $viewdata);
+    }
+    public function filterSelect(Type $var = null)
+    {
+        $data['trial_code']=$this->model_treatment->filterSelect('trial_code');
+        $data['squence']=$this->model_treatment->filterSelect('time_squence');
+        $data['replicate']=$this->model_treatment->filterSelect('replicate');
+        echo json_encode($data);
     }
 
      
@@ -109,14 +118,16 @@ class Viewdata extends CI_Controller
    
     public function getViewdata(Type $var = null)
     {
+        
         $post = [
             'length' => $this->input->post('length'),
             'start' => $this->input->post('start'),
             'order' => $this->input->post('order'),
             'search' => $this->input->post('search'),
             'draw' => $this->input->post('draw'),
-            "school_id" => $this->input->post("school_id"),
-            'jenis' => $this->input->post('jenis'),
+            "trial_code"=>$this->input->post('trial_code'),
+            'squence'=>$this->input->post('squence'),
+            'replicate'=>$this->input->post('replicate'),
         ];
         $list = $this->model_viewdata->get_datatables($post);
         $data = [];
